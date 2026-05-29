@@ -1,0 +1,34 @@
+mode:
+  training: false
+  load_checkpoint: true
+  model_path: "models/cnn_ddqn_5x5/cnn_ddqn_5x5.pt"
+  logging: false
+  logs_dir: "logs/cnn_ddqn_5x5"
+
+environment:
+  board_size: 5
+  action_dim: 4
+  starvation_steps: 30
+
+dqn:
+  gamma: 0.99
+  batch_size: 64
+  epsilon_start: 1.0
+  epsilon_min: 0.01
+  epsilon_decay: 0.998
+  target_update_frequency: 300
+  learning_rate: 0.0005
+
+training:
+  num_episodes: 10000
+  save_best_only: false
+  checkpoint_interval: 1000
+
+replay_memory:
+  capacity: 20000
+
+network:
+  conv_filters: [16]
+  kernel_sizes: [3]
+  fc_layers: [64, 128]
+  dropout: 0.0

@@ -1,0 +1,32 @@
+mode:
+  training: false
+  load_checkpoint: true
+  model_path: "../models/dqn_5x5/dqn_5x5.pt"
+  logging: true
+  logs_dir: "../logs/dqn_5x5"
+
+environment:
+  state_dim: 20
+  action_dim: 4
+  starvation_steps: null
+
+dqn:
+  gamma: 0.999
+  batch_size: 32
+  epsilon_start: 1.0
+  epsilon_min: 0.05
+  epsilon_decay: 0.99975
+  learning_rate: 0.00008
+  target_update_frequency: 8000
+
+network:
+  hidden_layers: [256, 256]
+  dropout: 0.2
+
+training:
+  num_episodes: 100000
+  save_best_only: false
+  checkpoint_interval: 1000
+
+replay_memory:
+  capacity: 200000
